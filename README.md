@@ -1,2 +1,2 @@
-# sensi-logger
-Thermostat data logger implemented using the sensi-client Node.js module
+# sensi-monitor
+Thermostat data logger and event monitor implemented using the sensi-client Node.js module
