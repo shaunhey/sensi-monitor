@@ -67,7 +67,7 @@ var sendMail = function(subject, message) {
         from: config.emailAddressFrom,
         to: config.emailAddressTo,
         subject: subject || "",
-        message: message || ""
+        message: message || "Message sent at " + new Date().toString()
     };
     
     if (config.verbose) {
