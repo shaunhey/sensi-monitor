@@ -67,7 +67,7 @@ var sendMail = function(subject, message) {
         from: config.emailAddressFrom,
         to: config.emailAddressTo,
         subject: subject || "",
-        text: message || "Message sent at " + new Date().toString()
+        text: message || ""
     };
     
     if (config.verbose) {
@@ -115,7 +115,9 @@ client.on("coolSetpointChanged", function(setpointChange) {
             "Cool setpoint has changed from " +
             setpointChange.oldSetpoint + 
             " to " +
-            setpointChange.newSetpoint
+            setpointChange.newSetpoint +
+            " at " +
+            new Date().toString()
         );
     }
 });
@@ -126,7 +128,9 @@ client.on("heatSetpointChanged", function(setpointChange) {
             "Heat setpoint has changed from " +
             setpointChange.oldSetpoint + 
             " to " + 
-            setpointChange.newSetpoint
+            setpointChange.newSetpoint +
+            " at " +
+            new Date().toString()
         );
     }
 });
@@ -137,7 +141,9 @@ client.on("runningModeChanged", function(modeChange) {
             "Running mode has changed from " +
             modeChange.oldMode +
             " to " +
-            modeChange.newMode
+            modeChange.newMode +
+            " at " +
+            new Date().toString()
         );
     }
 });
@@ -148,7 +154,9 @@ client.on("systemModeChanged", function(modeChange) {
             "System mode has changed from " +
             modeChange.oldMode +
             " to " +
-            modeChange.newMode
+            modeChange.newMode +
+            " at " +
+            new Date().toString()
         );
     }
 });
