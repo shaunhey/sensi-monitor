@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var config = require("./config.js");
 var SensiClient = require("sensi-client");
 
@@ -14,6 +16,26 @@ var options = {
 };
 
 var client = new SensiClient(options);
+
+if (config.dataLogging) {
+    if (!config.dataLoggingConnectionString) {
+        log("ERROR! config.dataLoggingConnectionString is not set! Thermostat readings will not be saved!");   
+    } else if (!config.dataLoggingCollectionName) {
+        log("ERROR! config.dataLoggingCollectionName is not set! Thermostat readings will not be saved!");
+    } else {
+        var mongojs = require("mongojs");
+        var db = mongojs(config.dataLoggingConnectionString);
+        var collection = db.collection(config.dataLoggingCollectionName);
+    }
+}
+
+var saveData = function(data) {
+    if (!config.dataLogging || !collection) {
+        return;
+    }
+    
+    collection.insert(data);
+};
 
 if (config.emailAlerts) {
     if (!config.emailAddressFrom) {
@@ -127,14 +149,20 @@ client.on("update", function(updateMessage) {
     if (config.verbose) {
         log("Thermostat update received"); 
     }
+    
+    saveData(updateMessage);
 });
 
 client.on("online", function(onlineMessage) {
     log("Thermostat is online");
+    
+    saveData(onlineMessage);
 });
 
 client.on("offline", function(offlineMessage) {
     log("Thermostat is OFFLINE");
+    
+    saveData(offlineMessage);
 });
 
 connect();

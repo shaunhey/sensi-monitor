@@ -1,6 +1,6 @@
 {
   "name": "sensi-monitor",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Sensi thermostat data logger and event monitor for Node.js",
   "author": "Shaun Hey <shaun@shaunhey.com>",
   "main": "sensi-monitor.js",
@@ -9,8 +9,10 @@
     "sensi-monitor": "./sensi-monitor.js"
   },
   "dependencies": {
+    "mongojs": "^1.3.0",
     "nodemailer": "^1.4.0",
-    "nodemailer-sendmail-transport": "^1.0.0"
+    "nodemailer-sendmail-transport": "^1.0.0",
+    "sensi-client": "git://github.com/shaunhey/sensi-client.git"
   },
   "repository": {
     "type": "git",

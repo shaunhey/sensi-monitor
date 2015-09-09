@@ -1,4 +1,8 @@
 var config = {
+    dataLogging: true,
+    dataLoggingConnectionString: "sensi",
+    dataLoggingCollectionName: "readings",
+    
     emailAlerts: true,
     emailAddressTo: process.env.SENSI_MONITOR_EMAIL_TO,
     emailAddressFrom: process.env.SENSI_MONITOR_EMAIL_FROM,
