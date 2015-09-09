@@ -7,6 +7,10 @@ var config = {
     emailAddressTo: process.env.SENSI_MONITOR_EMAIL_TO,
     emailAddressFrom: process.env.SENSI_MONITOR_EMAIL_FROM,
     
+    emailAlertOnRunningModeChanged: false,
+    emailAlertOnSystemModeChanged: true,
+    emailAlertOnSetpointChanged: true,
+    
     sensiUsername: process.env.SENSI_USERNAME,
     sensiPassword: process.env.SENSI_PASSWORD,
 

@@ -110,39 +110,47 @@ var connect = function() {
 };
 
 client.on("coolSetpointChanged", function(setpointChange) {
-    sendMail(
-        "Cool setpoint has changed from " +
-        setpointChange.oldSetpoint + 
-        " to " +
-        setpointChange.newSetpoint
-    );
+    if (config.emailAlertOnSetpointChanged) {
+        sendMail(
+            "Cool setpoint has changed from " +
+            setpointChange.oldSetpoint + 
+            " to " +
+            setpointChange.newSetpoint
+        );
+    }
 });
 
 client.on("heatSetpointChanged", function(setpointChange) {
-    sendMail(
-        "Heat setpoint has changed from " +
-        setpointChange.oldSetpoint + 
-        " to " + 
-        setpointChange.newSetpoint
-    );
+    if (config.emailAlertOnSetpointChanged) {
+        sendMail(
+            "Heat setpoint has changed from " +
+            setpointChange.oldSetpoint + 
+            " to " + 
+            setpointChange.newSetpoint
+        );
+    }
 });
 
 client.on("runningModeChanged", function(modeChange) {
-    sendMail(
-        "Running mode has changed from " +
-        modeChange.oldMode +
-        " to " +
-        modeChange.newMode
-    );
+    if (config.emailAlertOnRunningModeChanged) {
+        sendMail(
+            "Running mode has changed from " +
+            modeChange.oldMode +
+            " to " +
+            modeChange.newMode
+        );
+    }
 });
 
 client.on("systemModeChanged", function(modeChange) {
-    sendMail(
-        "System mode has changed from " +
-        modeChange.oldMode +
-        " to " +
-        modeChange.newMode
-    );
+    if (config.emailAlertOnSystemModeChanged) {
+        sendMail(
+            "System mode has changed from " +
+            modeChange.oldMode +
+            " to " +
+            modeChange.newMode
+        );
+    }
 });
 
 client.on("update", function(updateMessage) {
