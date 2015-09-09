@@ -1,6 +1,6 @@
 {
   "name": "sensi-monitor",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Sensi thermostat data logger and event monitor for Node.js",
   "author": "Shaun Hey <shaun@shaunhey.com>",
   "main": "sensi-monitor.js",
