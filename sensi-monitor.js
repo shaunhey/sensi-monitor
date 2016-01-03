@@ -111,27 +111,37 @@ var connect = function() {
 
 client.on("coolSetpointChanged", function(setpointChange) {
     if (config.emailAlertOnSetpointChanged) {
-        sendMail(
-            "Cool setpoint has changed from " +
-            setpointChange.oldSetpoint + 
-            " to " +
-            setpointChange.newSetpoint +
-            " at " +
-            new Date().toString()
-        );
+        
+        if (setpointChange.isTemporaryHold ||
+            !config.omitScheduledSetpointAlerts) {
+            
+            sendMail(
+                "Cool setpoint has changed from " +
+                setpointChange.oldSetpoint + 
+                " to " +
+                setpointChange.newSetpoint +
+                " at " +
+                new Date().toString()
+            );
+        }
     }
 });
 
 client.on("heatSetpointChanged", function(setpointChange) {
     if (config.emailAlertOnSetpointChanged) {
-        sendMail(
-            "Heat setpoint has changed from " +
-            setpointChange.oldSetpoint + 
-            " to " + 
-            setpointChange.newSetpoint +
-            " at " +
-            new Date().toString()
-        );
+        
+        if (setpointChange.isTemporaryHold ||
+            !config.omitScheduledSetpointAlerts) {
+        
+            sendMail(
+                "Heat setpoint has changed from " +
+                setpointChange.oldSetpoint + 
+                " to " + 
+                setpointChange.newSetpoint +
+                " at " +
+                new Date().toString()
+            );
+        }
     }
 });
 

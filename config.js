@@ -11,6 +11,8 @@ var config = {
     emailAlertOnSystemModeChanged: true,
     emailAlertOnSetpointChanged: true,
     
+    omitScheduledSetpointAlerts: true,
+    
     sensiUsername: process.env.SENSI_USERNAME,
     sensiPassword: process.env.SENSI_PASSWORD,
 
